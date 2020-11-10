@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>福祉・医療専門情報サイト&レート計算アプリ</title>
+    
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/8.0.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/8.0.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/8.0.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/8.0.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/8.0.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+   <!-- ヘッダー部分 -->
+    <header>
+        <div class="header">
+            <div class="headerLogo">
+                <a href="/">
+                    <img src="./imgs/logo.png" alt="ロゴ画像">
+                </a>
+            </div>
+            <div class="searchBar">
+                    <input id="search" type="text" name="search" placeholder="検索ワードを入力" onchange="search()">
+            </div>
+
+            <div id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav id="globalMenuSp">
+                <div class="menuContents">
+                    <div class="menuContainer">
+                        <div class="rate-header">
+                            <h2>外貨レート</h2>
+                            <small id="menuGetDate"> 11月1日 18時30分 </small>
+                        </div>
+                        <div class="rate-base">
+                            <p>ベース表示通貨：</p>
+                            <select name="baseCountry" id="menuBaseCountry" onchange="changeRate()">
+                                <option value="uro" selected>EURO</option>
+                                <option value="usd">USD</option>
+                                <option value="jpy">JPY</option>
+                            </select>
+                        </div>
+                        <div class="rateListsContents">
+                            <div id="menuRateLists"></div>
+                        </div>
+                    </div>
+                </div>
+            </nav>  
+        </div>
+    </header>
+
+    <!-- メイン部分 -->
+    <section class="main-wrapper">
+        <div class="mainLeftContainer">
+            <div class="calcContainer">
+                <div class="clacBox">
+                    <div class="resultCountry">
+                            <p>出力通貨コード：</p>
+                            <select id="resultCountry" onchange="resultCalc()"></select>
+                        
+                    </div>
+                    <div class="clacLists">
+                        <input id="inputMoney" placeholder="金額を入力" onchange="resultCalc()">
+                        <select id="calcCountry" name="calcCountry" onchange="resultCalc()"></select> 
+                        <h1>　=>　</h1>
+                        <h1 class="resultCurrency" id="log">未計算</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="spSearchBar">
+                    <input id="spSearch" type="text" name="search" placeholder="検索ワードを入力" onchange="search()">
+            </div>
+
+            <div class="newsContainer" id="newsContainer">
+            </div>
+        </div>
+        <div class="mainRightContainer">
+            <div class="rate-header">
+                <h2>外貨レート</h2>
+                <small id="getDate"> 11月1日 18時30分 </small>
+            </div>
+            <div class="rate-base">
+                <p>ベース表示通貨：</p>
+                <select name="baseCountry" id="baseCountry" onchange="changeRate()">
+                    <option value="uro" selected>EURO</option>
+                    <option value="usd">USD</option>
+                    <option value="jpy">JPY</option>
+                </select>
+            </div>
+            <div class="rateListsContents">
+                <div id="rateLists"></div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <p>福祉・医療専門情報サイト&レート計算アプリ</p>
+    </footer>
+
+
+    <script src="./index.js"></script>
+    <script src="./rate.js"></script>
+    <script src="./news.js"></script>
+  </body>
+</html>

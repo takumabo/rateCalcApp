@@ -1,0 +1,660 @@
+@charset "UTF-8";
+h1, h2, h3, h4, h5, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+input[type="text"],
+input[type="password"],
+textarea,
+select {
+  outline: none;
+}
+
+body, header {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80px;
+  -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+  background: #003185;
+  border-bottom: 3px solid #C9171E;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+header .headerLogo {
+  vertical-align: top;
+  display: inline-block;
+  padding: 20px 0 0 50px;
+}
+
+header .headerLogo img {
+  width: 250px;
+}
+
+header .searchBar {
+  vertical-align: top;
+  display: inline-block;
+  line-height: 100px;
+  margin: 0px 0 0 100px;
+}
+
+@media screen and (max-width: 575px) {
+  header .searchBar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  header .searchBar {
+    margin: 0px 0 0 50px;
+  }
+}
+
+header .searchBar input {
+  border: none;
+  border-radius: 30px;
+  max-width: 500px;
+  min-width: 300px;
+  line-height: 1.7rem;
+  font-size: 1.4rem;
+  padding-left: 20px;
+}
+
+#hamburger {
+  display: block;
+  position: fixed;
+  z-index: 3;
+  right: 13px;
+  top: 12px;
+  width: 42px;
+  height: 42px;
+  cursor: pointer;
+  text-align: center;
+}
+
+@media screen and (min-width: 1200px) {
+  #hamburger {
+    display: none;
+  }
+}
+
+#hamburger span {
+  display: block;
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  left: 6px;
+  background: #fff;
+  -webkit-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out;
+}
+
+#hamburger span:nth-child(1) {
+  top: 20px;
+}
+
+#hamburger span:nth-child(2) {
+  top: 30px;
+}
+
+#hamburger span:nth-child(3) {
+  top: 40px;
+}
+
+/* ナビ開いてる時のボタン */
+#hamburger.active span:nth-child(1) {
+  top: 16px;
+  left: 6px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+#hamburger.active span:nth-child(2),
+#hamburger.active span:nth-child(3) {
+  top: 16px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+nav#globalMenuSp {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  color: #000;
+  background: #fff;
+  text-align: center;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  width: 100%;
+  height: 100vh;
+}
+
+nav#globalMenuSp .menuContents {
+  padding: 0;
+  width: 60%;
+  height: 100vh;
+}
+
+@media screen and (max-width: 575px) {
+  nav#globalMenuSp .menuContents {
+    width: 100%;
+  }
+}
+
+/* このクラスを、jQueryで付与・削除する */
+nav#globalMenuSp.active {
+  -webkit-transform: translateX(60%);
+          transform: translateX(60%);
+}
+
+@media screen and (max-width: 575px) {
+  nav#globalMenuSp.active {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+.main-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  background-color: #fcfcfc;
+}
+
+.mainLeftContainer {
+  background: #e0ecff;
+  padding: 20px 30px 0;
+  width: 70%;
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  .mainLeftContainer {
+    width: 100%;
+    height: calc(100vh - 110px);
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .mainLeftContainer {
+    width: 100%;
+    height: calc(100vh - 100px);
+    padding: 0;
+  }
+}
+
+.calcContainer {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.calcContainer .clacBox {
+  padding: 30px 30px 10px;
+  -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 575px) {
+  .calcContainer .clacBox {
+    padding: 20px 0;
+    border-radius: 0;
+  }
+}
+
+.calcContainer .clacBox .resultCountry {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  line-height: 40px;
+  min-width: 200px;
+}
+
+.calcContainer .clacBox .resultCountry select {
+  width: 100px;
+}
+
+.calcContainer .clacBox h2 {
+  padding-bottom: 10px;
+  color: #0E54CF;
+}
+
+.calcContainer .clacBox .clacLists {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-bottom: 5px;
+  height: 40px;
+  border-bottom: 1px solid gray;
+}
+
+.calcContainer .clacBox .clacLists input {
+  width: 200px;
+}
+
+@media screen and (max-width: 575px) {
+  .calcContainer .clacBox .clacLists input {
+    width: 100px;
+  }
+}
+
+.calcContainer .clacBox .clacLists h1 {
+  text-align: right;
+  width: 170px;
+}
+
+@media screen and (max-width: 575px) {
+  .calcContainer .clacBox .clacLists h1 {
+    width: 70px;
+    padding-top: 10px;
+    font-size: 1rem;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  .calcContainer .clacBox .clacLists h1 {
+    width: 100px;
+    text-align: left;
+  }
+}
+
+.calcContainer .clacBox .clacLists select {
+  width: 100px;
+}
+
+@media screen and (max-width: 575px) {
+  .calcContainer .clacBox .clacLists select {
+    width: 50px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .calcContainer .clacBox .clacLists .resultCurrency {
+    width: 120px;
+    padding-right: 0.5rem;
+    height: 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .spSearchBar {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0 10px;
+  }
+  .spSearchBar input {
+    border: none;
+    border-radius: 30px;
+    max-width: 500px;
+    min-width: 300px;
+    line-height: 1.7rem;
+    font-size: 1.4rem;
+    padding-left: 20px;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  .spSearchBar {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .spSearchBar {
+    display: none;
+  }
+}
+
+.newsContainer {
+  padding-top: 10px;
+  width: 100%;
+  height: 520px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  overflow: scroll;
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  .newsContainer {
+    width: 100%;
+    height: calc(100vh - 280px);
+    margin-left: 25px;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .newsContainer {
+    padding-top: 0;
+    width: 100%;
+    height: calc(100vh - 300px);
+  }
+}
+
+.newsContainer .newsBox {
+  -webkit-box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 280px;
+  height: 280px;
+  margin: 10px;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 575px) {
+  .newsContainer .newsBox {
+    width: 100%;
+    height: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 10px 0;
+  }
+}
+
+.newsContainer .newsBox .newsImg {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 280px;
+  height: 200px;
+  border-radius: 15px 15px 0 0;
+}
+
+@media screen and (max-width: 575px) {
+  .newsContainer .newsBox .newsImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px 0 0 15px;
+  }
+}
+
+.newsContainer .newsBox .newsTitle {
+  font-size: 0.9rem;
+  color: #303030;
+}
+
+@media screen and (max-width: 575px) {
+  .newsContainer .newsBox .newsTitle {
+    width: 80%;
+    padding: 0 10px;
+  }
+}
+
+.newsContainer .newsBox small {
+  padding-left: 100px;
+}
+
+@media screen and (max-width: 575px) {
+  .newsContainer .newsBox small {
+    padding: 0;
+  }
+}
+
+.mainRightContainer {
+  padding: 20px 30px 0;
+  width: 30%;
+  -webkit-box-shadow: 5px 0px 5px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 0px 5px 2px rgba(0, 0, 0, 0.2);
+  background-color: #0E54CF;
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  .mainRightContainer {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .mainRightContainer {
+    display: none;
+  }
+}
+
+.mainRightContainer .rate-header {
+  font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mainRightContainer .rate-header h2 {
+  color: #fff;
+}
+
+.mainRightContainer .rate-header small {
+  color: #fff;
+  padding: 1rem 0 0 1rem;
+}
+
+.mainRightContainer .rate-base {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 20px;
+  color: #fff;
+}
+
+.mainRightContainer .rate-base p {
+  padding-top: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.mainRightContainer .rate-base select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-bottom: 20px;
+  padding: 7px 30px 7px 10px;
+  font-size: 200%;
+  line-height: 1.1em;
+  border: none;
+  background-image: url(./imgs/iconArrow.png);
+  background-repeat: no-repeat;
+  background-size: 12px 10px;
+  background-position: right 10px center;
+  background-color: transparent;
+  color: #fff;
+}
+
+.mainRightContainer .rate-base select:hover {
+  background-color: #fff;
+  color: #0E54CF;
+  background-image: url(./imgs/iconHover.png);
+}
+
+.mainRightContainer .rateListsContents {
+  width: 100%;
+  height: 530px;
+  overflow: scroll;
+}
+
+.mainRightContainer .rateList {
+  font-weight: bold;
+  text-align: center;
+  font-size: 2rem;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+.mainRightContainer .rateList:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #0E54CF;
+}
+
+.menuContainer {
+  padding: 20px 30px 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0E54CF;
+}
+
+@media screen and (max-width: 575px) {
+  .menuContainer {
+    padding: 40px 20px 0;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  .menuContainer {
+    padding: 50px 20px 0;
+  }
+}
+
+.menuContainer .rate-header {
+  font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menuContainer .rate-header h2 {
+  color: #fff;
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  .menuContainer .rate-header h2 {
+    font-size: 1.3rem;
+  }
+}
+
+.menuContainer .rate-header small {
+  color: #fff;
+  padding: 1rem 0 0 1rem;
+}
+
+.menuContainer .rate-base {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 20px;
+  color: #fff;
+}
+
+.menuContainer .rate-base p {
+  padding-top: 0.5rem;
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  .menuContainer .rate-base p {
+    font-size: 1.2rem;
+  }
+}
+
+.menuContainer .rate-base select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-bottom: 20px;
+  padding: 7px 30px 7px 10px;
+  font-size: 200%;
+  line-height: 1.1em;
+  border: none;
+  background-image: url(./imgs/iconArrow.png);
+  background-repeat: no-repeat;
+  background-size: 12px 10px;
+  background-position: right 10px center;
+  background-color: transparent;
+  color: #fff;
+}
+
+.menuContainer .rate-base select:hover {
+  background-color: #fff;
+  color: #0E54CF;
+  background-image: url(./imgs/iconHover.png);
+}
+
+.menuContainer .rateListsContents {
+  width: 60%;
+  height: 100vh;
+  overflow: scroll;
+}
+
+@media screen and (max-width: 575px) {
+  .menuContainer .rateListsContents {
+    width: 100%;
+    padding-left: 2rem;
+    height: 75vh;
+  }
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  .menuContainer .rateListsContents {
+    height: 82vh;
+  }
+}
+
+.menuContainer .rateList {
+  width: 100%;
+  font-weight: bold;
+  text-align: left;
+  font-size: 1.8rem;
+  color: #fff;
+  padding: 1rem 0;
+}
+
+.menuContainer .rateList:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #0E54CF;
+}
+
+@media screen and (min-width: 576px) and (max-width: 1199px) {
+  .menuContainer .rateList {
+    font-size: 1.5rem;
+  }
+}
+
+footer {
+  border-top: 3px solid #C9171E;
+  position: absolute;
+  /*←絶対位置*/
+  bottom: 0;
+  /*下に固定*/
+  width: 100vw;
+  font-weight: bold;
+  background-color: #003185;
+  text-align: center;
+}
+
+footer p {
+  line-height: 20px;
+  font-size: 0.8rem;
+  color: #fff;
+}
+/*# sourceMappingURL=style.css.map */

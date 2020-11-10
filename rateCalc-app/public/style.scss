@@ -1,0 +1,537 @@
+$hd-min: 1200px;
+$desktop-max: 1199px;
+$desktop-min: 768px;
+$tablet-max: 767px;
+$tablet-min: 576px;
+$mobile-max: 575px;
+
+
+@mixin screen-hd {
+    @media screen and (min-width: $hd-min) {
+      @content;
+    }
+  }
+  @mixin screen-desktop {
+    @media screen and (min-width: $tablet-min) and (max-width: $desktop-max) {
+      @content;
+    }
+  }
+  @mixin screen-mobile {
+    @media screen and (max-width: $mobile-max) {
+      @content;
+    }
+  }
+
+
+
+
+
+
+
+h1,h2,h3,h4,h5,p,ul,li {
+    margin: 0;
+    padding: 0;
+}
+
+input[type="text"], 
+input[type="password"], 
+textarea, 
+select {
+    outline: none;
+}
+
+body,header {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+// header SCSS
+header {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 80px;
+    box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);
+    background: rgb(0, 49, 133);
+    border-bottom: 3px solid #C9171E;
+    display: flex;
+    .headerLogo {
+        vertical-align: top;
+        display: inline-block;
+        padding: 20px 0 0 50px;
+        img {
+            width: 250px;
+        }
+    }
+    .searchBar {
+        vertical-align: top;
+        display: inline-block;
+        line-height: 100px;
+        margin: 0px 0 0 100px;
+        @include screen-mobile {
+            display: none;
+        }
+        @include screen-desktop {
+            margin: 0px 0 0 50px;
+        }
+        input{
+            border: none;
+            border-radius: 30px;
+            max-width: 500px;
+            min-width: 300px;
+            line-height: 1.7rem;
+            font-size: 1.4rem;
+            padding-left: 20px;
+        }
+    }
+}
+
+
+#hamburger {
+    @include screen-hd {
+        display: none;
+     }
+    display : block;
+    position: fixed;
+    z-index : 3;
+    right : 13px;
+    top   : 12px;
+    width : 42px;
+    height: 42px;
+    cursor: pointer;
+    text-align: center;
+    span {
+        display : block;
+    position: absolute;
+    width   : 30px;
+    height  : 2px ;
+    left    : 6px;
+    background : #fff;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition   : 0.3s ease-in-out;
+    transition        : 0.3s ease-in-out;
+    }
+  }
+  #hamburger span:nth-child(1) {
+    top: 20px;
+  }
+  #hamburger span:nth-child(2) {
+    top: 30px;
+  }
+  #hamburger span:nth-child(3) {
+    top: 40px;
+  }
+  
+  /* ナビ開いてる時のボタン */
+  #hamburger.active span:nth-child(1) {
+    top : 16px;
+    left: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform   : rotate(-45deg);
+    transform        : rotate(-45deg);
+  }
+  
+  #hamburger.active span:nth-child(2),
+  #hamburger.active span:nth-child(3) {
+    top: 16px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform   : rotate(45deg);
+    transform        : rotate(45deg);
+  }
+  
+  nav#globalMenuSp {
+    position: fixed;
+    z-index : 2;
+    top  : 0;
+    left : 0;
+    color: #000;
+    background: #fff;
+    text-align: center;
+    transform: translateX(100%);
+    transition: all 0.6s;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  nav#globalMenuSp .menuContents {
+    padding: 0;
+    width: 60%;
+    height: 100vh;
+    @include screen-mobile {
+        width: 100%;
+    }
+  }
+  
+  /* このクラスを、jQueryで付与・削除する */
+  nav#globalMenuSp.active {
+    transform: translateX(60%);
+    @include screen-mobile {
+        transform: translateX(0);
+    }
+  }
+
+
+
+
+
+
+.main-wrapper {
+    display: flex;
+    width: 100vw;
+    background-color: rgb(252, 252, 252);
+}
+
+.mainLeftContainer {
+    background: rgb(224, 236, 255);
+    padding: 20px 30px 0;
+    width: 70%;
+    @include screen-desktop {
+        width: 100%;
+        height: calc(100vh - 110px);
+    }
+     @include screen-mobile {
+        width: 100%;
+        height: calc(100vh - 100px);
+        padding: 0;
+    }
+}
+
+.calcContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .clacBox {
+        padding: 30px 30px 10px;
+        box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);
+        border-radius: 15px;
+        border: 1px solid rgba(0,0,0,0.1);
+        width: 100%;
+        background-color: #fff;
+        @include screen-mobile {
+            padding: 20px 0;
+            border-radius: 0;
+        }
+        .resultCountry {
+            display: flex;
+            justify-content: flex-end;
+            line-height: 40px;
+            min-width: 200px;
+            select {
+                width: 100px;
+            }
+        }
+        h2 {
+            padding-bottom: 10px;
+            color: #0E54CF;
+        }
+        .clacLists {
+            display: flex;
+            width: 100%;
+            margin-bottom: 5px;
+            height: 40px;
+            border-bottom: 1px solid gray;
+            input {
+                width: 200px;
+                @include screen-mobile {
+                    width: 100px;
+                }
+            }
+            h1 {
+                text-align: right;
+                width: 170px;
+                @include screen-mobile {
+                    width: 70px;
+                    padding-top: 10px;
+                    font-size: 1rem;
+                    text-align: center;
+                }
+                @include screen-desktop {
+                    width: 100px;
+                    text-align: left;
+                }
+            }
+            select {
+                width: 100px;
+                @include screen-mobile {
+                    width: 50px;
+                }
+            }
+            .resultCurrency {
+                @include screen-mobile {
+                    width: 120px;
+                    padding-right: 0.5rem;
+                    height: 1.5rem;
+                    font-size: 1rem;
+                }
+                
+            }
+        }
+    }
+}
+
+.spSearchBar {
+    @include screen-mobile {
+        width: 100%;
+        text-align: center;
+        margin: 20px 0 10px;
+        input {
+            border: none;
+            border-radius: 30px;
+            max-width: 500px;
+            min-width: 300px;
+            line-height: 1.7rem;
+            font-size: 1.4rem;
+            padding-left: 20px;
+        }
+    }
+
+    @include screen-desktop {
+        display: none;
+    }
+
+    @include screen-hd {
+        display: none;
+    }
+}
+
+.newsContainer {
+    padding-top: 10px;
+    width: 100%;
+    height: 520px;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    @include screen-desktop {
+        width: 100%;
+        height: calc(100vh - 280px);
+        margin-left: 25px;
+    }
+    @include screen-mobile {
+        padding-top: 0;
+        width: 100%;
+        height: calc(100vh - 300px);
+    }
+    .newsBox {
+        box-shadow:1px 1px 5px 2px rgba(0,0,0,0.2);
+        border-radius: 15px;
+        border: 1px solid rgba(0,0,0,0.1);
+        width: 280px;
+        height: 280px;
+        margin: 10px;
+        background-color: #fff;
+        @include screen-mobile {
+            width: 100%;
+            height: 50px;
+            display: flex;
+            margin: 10px 0;
+        }
+        .newsImg {
+            object-fit: cover;
+            width: 280px;
+            height: 200px;
+            border-radius: 15px 15px 0 0;
+            @include screen-mobile {
+                width: 50px;
+                height: 50px;
+                border-radius: 15px 0 0 15px;
+            }
+        }
+        .newsTitle {
+            font-size: 0.9rem;
+            color: #303030;
+            @include screen-mobile {
+                width: 80%;
+                padding: 0 10px;
+            }
+        }
+        small {
+          padding-left: 100px;
+          @include screen-mobile {
+            padding:0;
+        }
+        }
+
+    }
+}
+
+.mainRightContainer {
+    padding: 20px 30px 0;
+    width: 30%;
+    box-shadow:5px 0px 5px 2px rgba(0, 0, 0, 0.2);
+    background-color: #0E54CF;
+    @include screen-desktop {
+       display: none;
+    }
+    @include screen-mobile {
+        display: none;
+    }
+    .rate-header {
+        font-size: 1.2rem;
+        display: flex;
+        h2 {
+            color: #fff;
+        }
+        small {
+            color: #fff;
+            padding: 1rem 0 0 1rem;
+        }
+    }
+    .rate-base {
+        display: flex;
+        padding-top: 20px;
+        color: #fff;
+        p {
+            padding-top: 0.5rem;
+            font-size: 1.5rem;
+        }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin-bottom: 20px;
+            padding: 7px 30px 7px 10px;
+            font-size: 200%;
+            line-height: 1.1em;
+            border: none;
+            background-image: url(./imgs/iconArrow.png);
+            background-repeat: no-repeat;
+            background-size: 12px 10px;
+            background-position: right 10px center;
+            background-color: transparent;
+            color: #fff;
+            &:hover {
+                background-color: #fff;
+                color: #0E54CF;
+                background-image: url(./imgs/iconHover.png);
+              }
+        }
+    }
+    
+    .rateListsContents {
+        width: 100%;
+        height: 530px;
+        overflow: scroll;
+    }
+    .rateList {
+        font-weight: bold;
+        text-align: center;
+        font-size: 2rem;
+        color: #fff;
+        padding: 1rem 0;
+        &:hover {
+            background-color: rgba(255,255,255,0.8);
+            color: #0E54CF;
+        }
+    }
+}
+
+.menuContainer {
+    padding: 20px 30px 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0E54CF;
+    @include screen-mobile {
+        padding: 40px 20px 0;
+    }
+    @include screen-desktop {
+        padding: 50px 20px 0;
+     }
+    .rate-header {
+        font-size: 1.2rem;
+        display: flex;
+        h2 {
+            color: #fff;
+            @include screen-desktop {
+                font-size: 1.3rem;
+             }
+        }
+        small {
+            color: #fff;
+            padding: 1rem 0 0 1rem;
+        }
+    }
+    .rate-base {
+        display: flex;
+        padding-top: 20px;
+        color: #fff;
+        p {
+            padding-top: 0.5rem;
+            font-size: 1.5rem;
+            @include screen-desktop {
+                font-size: 1.2rem;
+             }
+        }
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            margin-bottom: 20px;
+            padding: 7px 30px 7px 10px;
+            font-size: 200%;
+            line-height: 1.1em;
+            border: none;
+            background-image: url(./imgs/iconArrow.png);
+            background-repeat: no-repeat;
+            background-size: 12px 10px;
+            background-position: right 10px center;
+            background-color: transparent;
+            color: #fff;
+            &:hover {
+                background-color: #fff;
+                color: #0E54CF;
+                background-image: url(./imgs/iconHover.png);
+              }
+        }
+    }
+    
+    .rateListsContents {
+        width: 60%;
+        height: 100vh;
+        overflow: scroll;
+        @include screen-mobile {
+            width: 100%;
+            padding-left: 2rem; 
+            height: 75vh;
+        }
+        @include screen-desktop {
+            height: 82vh;
+        }
+    }
+    .rateList {
+        width: 100%;
+        font-weight: bold;
+        text-align: left;
+        font-size: 1.8rem;
+        color: #fff;
+        padding: 1rem 0;
+        &:hover {
+            background-color: rgba(255,255,255,0.8);
+            color: #0E54CF;
+        }
+        @include screen-desktop {
+            font-size: 1.5rem;
+         }
+    }
+}
+
+
+
+footer {
+    border-top: 3px solid #C9171E;
+    position: absolute;/*←絶対位置*/
+    bottom: 0; /*下に固定*/
+    width: 100vw;
+    font-weight: bold;
+    background-color: rgb(0, 49, 133);
+    text-align: center;
+    p {
+        line-height: 20px;
+        font-size: 0.8rem;
+        color: #fff;
+    }
+}
